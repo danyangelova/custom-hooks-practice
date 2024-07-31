@@ -1,8 +1,11 @@
+
 import ArticleCard from "./components/ArticleCard"
+import { useFetch } from "./hooks/useFetch"
 
 
 function App() {
 
+  const { data: articles } = useFetch('http://localhost:3030/jsonstore/advanced/articles/list', [])
 
   return (
     <>
@@ -13,10 +16,7 @@ function App() {
       </nav>
 
       <div className="wrapper">
-        <ArticleCard />
-        <ArticleCard />
-        <ArticleCard />
-        <ArticleCard />
+        {articles.map((article) => <ArticleCard key={article._id} {...article} />)}
       </div>
     </>
   )

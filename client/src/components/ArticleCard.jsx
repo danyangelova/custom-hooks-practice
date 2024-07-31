@@ -1,9 +1,12 @@
-export default function ArticleCard() {
+export default function ArticleCard({
+    _id,
+    title
+}) {
     return (
         <>
             <div className="cards">
                 <div className="card">
-                    <h3>Title</h3>
+                    <h3>{title}</h3>
                 </div>
             </div>
         </>
