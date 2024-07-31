@@ -1,31 +1,25 @@
 
-import ArticleCard from "./components/ArticleCard"
-import Spinner from "./components/Spinner"
-import { useFetch } from "./hooks/useFetch"
+import ArticleCardDetails from "./components/ArticleCardDetails"
+import ArticleList from "./components/ArticleList"
+import Navigation from "./components/Navigation"
+
+
+import { Routes, Route } from 'react-router-dom'
 
 
 function App() {
 
-  const { data: articles, isFetching, refetch } = useFetch('http://localhost:3030/jsonstore/advanced/articles/list', [])
+  
 
   return (
     <>
-      <nav>
-        <ul>
-          <a href="/"><li>Home</li></a>
-        </ul>
-      </nav>
+      <Navigation />
 
-      {isFetching
-        ? <Spinner />
-        : (
-          <div className="wrapper">
-            {articles.map((article) => <ArticleCard key={article._id} {...article} />)}
-          </div>
-        )
-      }
-
-      <button onClick={refetch} className="btn">Refetch</button>
+      <Routes>
+        <Route path="/" element={<h2>Welcome</h2>} />
+        <Route path="/articles" element={<ArticleList />} />
+        <Route path="/articles/:articleId/details" element={<ArticleCardDetails />} />
+      </Routes>
 
     </>
   )

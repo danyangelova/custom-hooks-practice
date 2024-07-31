@@ -60,8 +60,16 @@ ul li {
 
 .btn {
   position: absolute;
-  top: 300px;
+  top: 350px;
   left: 37px;
+}
+
+h2 {
+  margin-left: 38px;
+}
+
+article {
+  margin-left: 37px;
 }
 
 a {
