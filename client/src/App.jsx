@@ -6,7 +6,7 @@ import { useFetch } from "./hooks/useFetch"
 
 function App() {
 
-  const { data: articles, isFetching } = useFetch('http://localhost:3030/jsonstore/advanced/articles/list', [])
+  const { data: articles, isFetching, refetch } = useFetch('http://localhost:3030/jsonstore/advanced/articles/list', [])
 
   return (
     <>
@@ -24,6 +24,8 @@ function App() {
           </div>
         )
       }
+
+      <button onClick={refetch} className="btn">Refetch</button>
 
     </>
   )
