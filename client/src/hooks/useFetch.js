@@ -4,6 +4,8 @@ export function useFetch(url, initialData) {
 
 
     const [data, setData] = useState(initialData)
+    const [isFetching, setIsFetching] = useState(true);
+
 
     useEffect(() => {
         (async () => {
@@ -11,10 +13,11 @@ export function useFetch(url, initialData) {
             const result = await response.json();
 
             setData(result);
+            setIsFetching(false); //sled mauntvane isFetching mi stava na false
         })()
     }, [])
 
-    
 
-    return { data };
+
+    return { data, isFetching };
 }
